@@ -1,4 +1,9 @@
 .App {
-  font-family: sans-serif;
+  font-family: monospace;
+  text-align: center;
+}
+
+button {
+  font-family: monospace;
   text-align: center;
 }
