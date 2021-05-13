@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import Todos from './Todos/Todos'
+import Todos from "./Todos/Todos";
 
 import "./styles.css";
 
