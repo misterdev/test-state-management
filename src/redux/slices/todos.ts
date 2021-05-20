@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { RootState } from "../store";
 interface TodosState {
   list: { text: string }[];
 }
@@ -14,7 +15,7 @@ const todosSlice = createSlice({
       state.list.push({ text: action.payload });
     },
     remove(state, action: PayloadAction<number>) {
-      //
+      state.list.splice(action.payload, 1);
     },
     reset(state) {
       state.list = [];
@@ -22,7 +23,8 @@ const todosSlice = createSlice({
   },
 });
 
-export const getTodosList = (state: any) => state.todos.list;
+export const getTodos = (state: RootState) => state.todos;
+export const getTodosList = (state: RootState) => state.todos.list;
 
 export const { add, remove, reset } = todosSlice.actions;
 export default todosSlice.reducer;

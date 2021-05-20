@@ -1,9 +1,11 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+
+import { useAppDispatch } from "../../redux/hooks";
 import { add as addAction } from "../../redux/slices/todos";
 
 const Add = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const [todo, setTodo] = useState("");
 
   return (
     <div
@@ -14,8 +16,20 @@ const Add = () => {
         padding: 20,
       }}
     >
-      <input style={{ marginRight: 20, width: "100%" }} type="text" />
-      <button onClick={() => dispatch(addAction("Test"))}>+</button>
+      <input
+        value={todo}
+        onChange={(e) => setTodo(e.target.value)}
+        style={{ marginRight: 20, width: "100%" }}
+        type="text"
+      />
+      <button
+        onClick={() => {
+          dispatch(addAction(todo));
+          setTodo("");
+        }}
+      >
+        +
+      </button>
     </div>
   );
 };

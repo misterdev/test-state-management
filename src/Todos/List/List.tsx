@@ -1,14 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-import { getTodosList } from "../../redux/slices/todos";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { getTodosList, remove as removeAction } from "../../redux/slices/todos";
 
 const List = () => {
-  const todos = useSelector(getTodosList);
+  const dispatch = useAppDispatch();
+  const todos = useAppSelector(getTodosList);
 
   return (
     <div>
-      {todos.map(({ text }: any, index: number) => (
+      {todos.map(({ text }, index: number) => (
         <div
           key={index}
           style={{
@@ -20,7 +21,7 @@ const List = () => {
           }}
         >
           <span>{text}</span>
-          <button>-</button>
+          <button onClick={() => dispatch(removeAction(index))}>-</button>
         </div>
       ))}
     </div>
