@@ -1,31 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { State } from "../../../types";
+import { apiSend } from "../../../utils/api";
 
 import { RootState } from "../store";
-export interface TodosState {
-  list: { text: string }[];
-  send: {
-    result?: string;
-    status: "DEFAULT" | "LOADING" | "SUCCESS" | "ERROR";
-  };
-}
 
-const initialState: TodosState = {
+const initialState: State = {
   list: [],
   send: {
     status: "DEFAULT",
   },
 };
-
-const apiSend = () =>
-  new Promise<string>((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() > 0.5) {
-        resolve("Send success!");
-      } else {
-        reject("Error: Send failed");
-      }
-    }, 3000);
-  });
 
 export const send = createAsyncThunk("todos/send", async () => {
   const response = await apiSend();

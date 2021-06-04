@@ -3,10 +3,17 @@ import { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
 
 import ReduxApp from "./redux";
+import ZustandApp from './zustand';
 
 import "./styles.css";
 
-const TOOLS = ["Redux", "Zustand", "Recoil", "Akita", "Reatom"];
+const TOOLS = [
+  "Redux",
+  "Zustand",
+  // "Recoil",
+  // "Akita",
+  // "Reatom"
+];
 
 const App = () => {
   const [currentTab, setCurrentTab] = useState(TOOLS[0]);
@@ -30,7 +37,7 @@ const App = () => {
 
         {currentTab === "Redux" && <ReduxApp />}
 
-        {/* {currentTab === 'Zustand' && <ZustandApp />} */}
+        {currentTab === 'Zustand' && <ZustandApp />}
 
         {/* {currentTab === 'Recoil' && <RecoilApp />} */}
 
