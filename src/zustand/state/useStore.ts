@@ -1,4 +1,5 @@
 import create from "zustand";
+import { devtools } from "zustand/middleware";
 
 import { State } from "../../types";
 import { apiSend } from "../../utils/api";
@@ -10,32 +11,34 @@ interface Actions {
   sendApi: () => Promise<void>;
 }
 
-const useStore = create<State & Actions>((set) => ({
+const useStore = create<State & Actions>(devtools((set) => ({
   list: [],
   send: {
     status: "DEFAULT",
   },
 
-  add: (todo) => set((state) => ({ list: [...state.list, { text: todo }] })),
+  add: (todo) => set((state) => ({ list: [...state.list, { text: todo }] }), false, 'add'),
 
   remove: (index) =>
     set((state) => ({
       list: state.list.filter((_, i) => i !== index),
-    })),
+    }), false, 'remove'),
 
-  reset: () => set({ list: [] }),
+  reset: () => set({ list: [] }, false, 'reset'),
 
   sendApi: async () => {
-    set({ send: { status: "LOADING" } })
+    set({ send: { status: "LOADING" } }, false, "sendApi > pending");
 
     try {
-    const response = await apiSend();
-      set({ send: { status: "SUCCESS" } })
+      await apiSend();
+      // https://github.com/pmndrs/zustand/pull/167
+      set({ send: { status: "SUCCESS" } }, false, "sendApi > fulfilled");
     } catch {
-      set({ send: { status: "ERROR" } })
+      set({ send: { status: "ERROR" } }, false, "sendApi > reject");
     }
-  }
-}));
+  },
+}), "tools"));
+
 
 /* Test with `import { combine } from "zustand/middleware";` */
 // const useStore = create(
