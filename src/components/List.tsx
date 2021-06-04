@@ -1,15 +1,9 @@
 import React from "react";
 
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { getTodosList, remove as removeAction } from "../../redux/slices/todos";
-
-const List = () => {
-  const dispatch = useAppDispatch();
-  const todos = useAppSelector(getTodosList);
-
+const List = ({ list, onRemove }: Props) => {
   return (
     <div>
-      {todos.map(({ text }, index: number) => (
+      {list.map(({ text }, index: number) => (
         <div
           key={index}
           style={{
@@ -21,11 +15,16 @@ const List = () => {
           }}
         >
           <span>{text}</span>
-          <button onClick={() => dispatch(removeAction(index))}>-</button>
+          <button onClick={() => onRemove(index)}>-</button>
         </div>
       ))}
     </div>
   );
 };
+
+interface Props {
+  list: { text: string }[];
+  onRemove: (index: number) => void;
+}
 
 export default List;

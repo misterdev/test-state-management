@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 
-import { useAppDispatch } from "../../redux/hooks";
-import { add as addAction } from "../../redux/slices/todos";
-
-const Add = () => {
-  const dispatch = useAppDispatch();
+const Add = ({ onAdd }: Props) => {
   const [todo, setTodo] = useState("");
 
   return (
@@ -23,8 +20,9 @@ const Add = () => {
         type="text"
       />
       <button
+        disabled={!todo.length}
         onClick={() => {
-          dispatch(addAction(todo));
+          onAdd(todo);
           setTodo("");
         }}
       >
@@ -33,5 +31,9 @@ const Add = () => {
     </div>
   );
 };
+
+interface Props {
+  onAdd: (todo: string) => void;
+}
 
 export default Add;
