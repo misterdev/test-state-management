@@ -13,7 +13,6 @@ const TOOLS = [
   "Redux",
   "Zustand",
   "Recoil",
-  // "Akita",
   "Reatom"
 ];
 
@@ -42,8 +41,6 @@ const App = () => {
         {currentTab === 'Zustand' && <ZustandApp />}
 
         {currentTab === 'Recoil' && <RecoilApp />}
-
-        {/* {currentTab === 'Akita' && <AkitaApp />} */}
 
         {currentTab === 'Reatom' && <ReatomApp />}
       </div>
