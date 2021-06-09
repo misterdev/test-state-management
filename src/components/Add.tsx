@@ -4,6 +4,11 @@ import { useState } from "react";
 const Add = ({ onAdd }: Props) => {
   const [todo, setTodo] = useState("");
 
+  const addTodo = () => {
+    onAdd(todo);
+    setTodo("");
+  };
+
   return (
     <div
       style={{
@@ -18,14 +23,13 @@ const Add = ({ onAdd }: Props) => {
         onChange={(e) => setTodo(e.target.value)}
         style={{ marginRight: 20, width: "100%" }}
         type="text"
-      />
-      <button
-        disabled={!todo.length}
-        onClick={() => {
-          onAdd(todo);
-          setTodo("");
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            addTodo();
+          }
         }}
-      >
+      />
+      <button disabled={!todo.length} onClick={addTodo}>
         +
       </button>
     </div>

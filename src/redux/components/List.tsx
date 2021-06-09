@@ -5,7 +5,7 @@ import { List as ListComponent } from "../../components";
 import { useAppDispatch, useAppSelector } from "../state/hooks";
 import { getTodosList, remove as removeAction } from "../state/slices/todos";
 
-const App = () => {
+const List = () => {
   const dispatch = useAppDispatch();
   const todos = useAppSelector(getTodosList);
 
@@ -17,4 +17,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default List;

@@ -9,7 +9,7 @@ import {
   send as sendAction,
 } from "../state/slices/todos";
 
-const App = () => {
+const Send = () => {
   const dispatch = useAppDispatch();
   const { status } = useAppSelector(getTodosSend);
   const todos = useAppSelector(getTodosList);
@@ -23,4 +23,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Send;
