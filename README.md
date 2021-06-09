@@ -8,8 +8,10 @@
 - JSX Wrapper
 
 **PRO**:
+-
 
 **CONS**:
+-
 
 ## Zustand
 **FEATURES**:
@@ -26,7 +28,24 @@
 - Actions without name in devtools.
 
 ## Recoil
-- JSX Wrapper
-- No Actions flow
+- Not slices-based but atom-based.
+- No actions flow.
+- JSX Wrapper.
 
 **PRO**
+- React-friendly: similar to the useState.
+- Async queries management.
+- Experimental: side effects on atoms.
+
+**CONS**
+- Dev tools "not available".
+- Some `_UNSTABLE` API
+
+## Reatom
+-
+
+**PRO**
+-
+
+**CONS**
+- No middleware: use subscribe to actions instead.
