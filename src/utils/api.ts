@@ -4,7 +4,7 @@ export const apiSend = () =>
       if (Math.random() > 0.5) {
         resolve("Send success!");
       } else {
-        reject("Error: Send failed");
+        reject("Error, Send failed.");
       }
     }, 3000);
   });
