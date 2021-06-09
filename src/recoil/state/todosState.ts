@@ -1,6 +1,6 @@
-import { atom, selector } from 'recoil';
+import { atom } from "recoil";
 
-import { State } from "../../types";
+import { List, Send, State } from "../../types";
 
 export const todosState = atom<State>({
   key: "todos",
@@ -10,4 +10,16 @@ export const todosState = atom<State>({
       status: "DEFAULT",
     },
   },
-})
+});
+
+export const listAtom = atom<List>({
+  key: "list",
+  default: [],
+});
+
+export const sendAtom = atom<Send>({
+  key: "send",
+  default: {
+    status: "DEFAULT",
+  },
+});

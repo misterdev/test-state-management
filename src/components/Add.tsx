@@ -5,8 +5,10 @@ const Add = ({ onAdd }: Props) => {
   const [todo, setTodo] = useState("");
 
   const addTodo = () => {
-    onAdd(todo);
-    setTodo("");
+    if (todo.length) {
+      onAdd(todo);
+      setTodo("");
+    }
   };
 
   return (
