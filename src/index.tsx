@@ -2,6 +2,7 @@ import React from "react";
 import { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
 
+import RecoilApp from './recoil';
 import ReduxApp from "./redux";
 import ZustandApp from './zustand';
 
@@ -10,7 +11,7 @@ import "./styles.css";
 const TOOLS = [
   "Redux",
   "Zustand",
-  // "Recoil",
+  "Recoil",
   // "Akita",
   // "Reatom"
 ];
@@ -39,7 +40,7 @@ const App = () => {
 
         {currentTab === 'Zustand' && <ZustandApp />}
 
-        {/* {currentTab === 'Recoil' && <RecoilApp />} */}
+        {currentTab === 'Recoil' && <RecoilApp />}
 
         {/* {currentTab === 'Akita' && <AkitaApp />} */}
 

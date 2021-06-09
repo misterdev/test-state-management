@@ -5,6 +5,7 @@
 **FEATURES**:
 - Shared root store.
 - Built-in Immer integration.
+- JSX Wrapper
 
 **PRO**:
 
@@ -15,6 +16,7 @@
 - Each slice has a separate state.
 - Immer middleware available.
 - Middlewares are added using nested function.
+- No JSX Wrapper
 
 **PRO**: 
 - Easy to use (everything in on file, objects with functions).
@@ -22,3 +24,9 @@
 
 **CONS**:
 - Actions without name in devtools.
+
+## Recoil
+- JSX Wrapper
+- No Actions flow
+
+**PRO**

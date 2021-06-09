@@ -37,7 +37,7 @@ const useStore = create<State & Actions>(devtools((set) => ({
       set({ send: { status: "ERROR" } }, false, "sendApi > reject");
     }
   },
-}), "tools"));
+}), "todos"));
 
 
 /* Test with `import { combine } from "zustand/middleware";` */
